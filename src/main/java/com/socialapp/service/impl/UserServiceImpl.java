@@ -100,5 +100,14 @@ public class UserServiceImpl implements UserService {
 			throw new RuntimeException("fetch user failed ");
 		}
 	}
+	public void DeleteUser(Integer id) {
+		try {
+			userRepository.delete(findByUserId(id));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+
+	}
 
 }

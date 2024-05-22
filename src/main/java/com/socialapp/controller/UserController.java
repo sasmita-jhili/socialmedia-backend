@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,8 +42,8 @@ public class UserController {
 		return ResponseEntity.ok(user);
 	}
 
-	@PutMapping("/follow/{userId}/{userId2}")
-	public ResponseEntity<User> followUserHandler(@PathVariable Integer userId1, Integer userId2) {
+	@PutMapping("/follow/{userId1}/{userId2}")
+	public ResponseEntity<User> followUserHandler(@PathVariable Integer userId1,@PathVariable Integer userId2) {
 		User user = service.followUser(userId1, userId2);
 		return ResponseEntity.ok(user);
 	}
@@ -57,6 +58,12 @@ public class UserController {
 	public ResponseEntity<List<User>> getAllUser() {
 		List<User> userList = service.fetchAllUsers();
 		return ResponseEntity.ok(userList);
+	}
+
+	@DeleteMapping("/remove/{id}")
+	public ResponseEntity<String> deleteUser(@PathVariable Integer id) {
+		service.DeleteUser(id);
+		return ResponseEntity.ok("User removed");
 	}
 
 }

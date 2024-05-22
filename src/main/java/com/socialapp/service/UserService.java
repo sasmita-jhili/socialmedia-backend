@@ -20,4 +20,6 @@ public interface UserService {
 
 	List<User> fetchAllUsers();
 
+	void DeleteUser(Integer id);
+
 }

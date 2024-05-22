@@ -1,5 +1,6 @@
 package com.socialapp.entity;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,17 +16,14 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class Post {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String firstName;
-	private String lastName;
-	private String email;
-	private String password;
-	private String gender;
-	private List<Integer> followers = new ArrayList<>();
-	private List<Integer> followings = new ArrayList<>();
-	private List<Post> savedPosts = new ArrayList<>();
-
+	private String caption;
+	private String image;
+	private String video;
+	private User user;
+	private LocalDateTime createdAt;
+	private List<User> liked = new ArrayList<>();
 }
