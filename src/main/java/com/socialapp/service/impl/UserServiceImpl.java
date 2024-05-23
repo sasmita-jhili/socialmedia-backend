@@ -1,7 +1,6 @@
 package com.socialapp.service.impl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,9 +36,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Optional<User> findUserByEmail(String email) {
+	public User findUserByEmail(String email) {
 		try {
-			Optional<User> user = userRepository.findByEmail(email);
+			User user = userRepository.findByEmail(email);
 			return user;
 		} catch (Exception e) {
 			throw new RuntimeException("User not exist with this email");

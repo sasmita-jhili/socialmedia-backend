@@ -1,7 +1,6 @@
 package com.socialapp.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.socialapp.entity.User;
 
@@ -10,7 +9,7 @@ public interface UserService {
 
 	User findByUserId(Integer userId);
 
-	Optional<User> findUserByEmail(String email);
+	User findUserByEmail(String email);
 
 	User followUser(Integer userId1, Integer userId2);
 

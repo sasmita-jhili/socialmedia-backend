@@ -1,5 +1,6 @@
 package com.socialapp.service.impl;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,10 +33,10 @@ public class PostServiceImpl implements PostService {
 		Post newPost = new Post();
 		newPost.setCaption(post.getCaption());
 		newPost.setImage(post.getImage());
-//		newPost.setCreatedAt(new LocalDate);
+		newPost.setCreatedAt(LocalDateTime.now());
 		newPost.setVideo(post.getVideo());
 		newPost.setUser(user);
-		return newPost;
+		return postRepository.save(newPost);
 	}
 
 	@Override
@@ -85,7 +86,6 @@ public class PostServiceImpl implements PostService {
 	public Post likePost(Integer postId, Integer userId) throws Exception {
 		Post post = findPostById(postId);
 		User user = userService.findByUserId(userId);
-		post.getLiked().add(user);
 
 		if (post.getLiked().contains(user)) {
 			post.getLiked().remove(user);
